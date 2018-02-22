@@ -29,6 +29,8 @@ def create_app(debug=None, config_path=None):
     if debug is not None:
         app.debug = debug
 
+    if app.debug and app.config['SECRET_KEY']:
+        app.init_debug_toolbar()
 
     # Redis (cache)
     from brainzutils import cache
